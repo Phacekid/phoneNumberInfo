@@ -43,8 +43,9 @@ def Track():
         #time showing in phone
         obj = TimezoneFinder()
         result = obj.timezone_at(lng=location.longitude, lat=location.latitude)
-
+        print(result)
         home = pytz.timezone(result)
+        print(home)
         local_time = datetime.now(home)
         current_time = local_time.strftime("%I:%M %p")
         clock.config(text=current_time)
@@ -61,11 +62,11 @@ def on_entry_click(event):
         enter_number.delete(0, END)
         enter_number.config(fg="black")
 
-# # Hides the response window
+# Hides the response window
 def hide_response():
     response_window.withdraw()
 
-# # Create a warning message widget for the response
+# Create a warning message widget for the response
 response_window = Toplevel(root)
 response_window.geometry("300x200+320+150")  # Set the size and position of the window
 response_message = Message(response_window, text="", width=250, font=("Helvetica", 14), fg="white", bg="red")
